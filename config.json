@@ -1,0 +1,57 @@
+{
+    "output_file": "./output.json",
+    "log_file": "./logsniffer.log",
+    "logging": true,
+    "memory": "2G",
+    "max_execution_time": 7200,
+
+    "file_extension": "log",
+    "files": [
+        "/Users/Gabor/Downloads/test"
+    ],
+
+    "metrics": [{
+        "type": "getCount",
+        "name": "Users By Activity",
+        "regex": "\b\"username\":\"[a-zA-Z0-9_-]+\"\b",
+        "clean_up": ["username\":", "\""],
+        "in_files": "*",
+        "match_all": false,
+        "sort": {
+            "by": "value",
+            "as": "number",
+            "order": "desc"
+        }
+    }, {
+        "type": "getCount",
+        "name": "API Calls By Popularity",
+        "regex": "\b\"uri\":\"[a-zA-Z0-9\/_-]+\"\b",
+        "clean_up": ["uri\":\"/", "\""],
+        "in_files": "*",
+        "match_all": false,
+        "sort": {
+            "by": "value",
+            "as": "number",
+            "order": "desc"
+        }
+    }, {
+        "type": "findDuplicates",
+        "name": "Duplicate Lines",
+        "match": [
+            "\/{\"uri\":\"\\/api\\/jobs\\/changeall\",\/",
+            "\/{\"uri\":\"\\/api\\/jobworkflows\\/update\",\/",
+            "\/{\"uri\":\"\\/api\\/assets\\/replace\",\/",
+            "\/{\"uri\":\"\\/api\\/tracks\\/new\",\/"
+        ],
+        "ignore": [
+            "\/^\\[([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\] API.INFO: API\/",
+            "\/\"time\":[0-9]+,\/"
+        ],
+        "in_files":"*"
+    }],
+
+    "feature_map": {
+        "findDuplicates": "FindDuplicates",
+        "getCount": "GetCount"
+    }
+}

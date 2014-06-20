@@ -1,0 +1,8 @@
+.svn
+.idea
+.DS_Store
+composer.lock
+composer.phar
+logsniffer.log
+output.json
+vendor

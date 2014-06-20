@@ -1,0 +1,17 @@
+{
+    "name": "geopal-solutions/corgi",
+    "description": "Corgi Log Analyzer",
+    "author": "gabor.zelei@geopal-solutions.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabor Zelei",
+            "email": "gabor.zelei@geopal-solutions.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "GeneralPattern": "src/"
+        }
+    }
+}
