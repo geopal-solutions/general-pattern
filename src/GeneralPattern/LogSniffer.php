@@ -85,7 +85,7 @@ class LogSniffer
      *
      * @return int|string
      */
-    public function doOutput()
+    public function getResult()
     {
         $outputFilePath = $this->config->get('output_file');
         $resultArray = $this->result->toArray();

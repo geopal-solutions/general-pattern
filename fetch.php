@@ -23,7 +23,7 @@ if (php_sapi_name() == 'cli') {
     );
 
     try {
-        LogSniffer::create($config)->run()->doOutput();
+        LogSniffer::create($config)->run()->getResult();
     } catch (InvalidInputException $e) {
         die('Invalid configuration file.');
     }
