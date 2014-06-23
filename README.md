@@ -24,7 +24,7 @@ Go and edit the `config.json` file. Some options will be explained below:
 "files": [
     "/path/to/my/logs/dir",
     "/path/to/a/single/log/file.log"
-],
+]
 ```
 
 `feature_map`: This defines a map to bind a metric type (see below) to an actual class that will analyze a line for mentioned metric. Currently, General Pattern supports two types of features, out of the box:
