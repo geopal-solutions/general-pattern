@@ -2,6 +2,11 @@
 
 namespace GeneralPattern;
 
+/**
+ * Class Config
+ * @package GeneralPattern
+ * @author gabor.zelei@geopal-solutions.com
+ */
 class Config
 {
     /**

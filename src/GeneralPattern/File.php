@@ -6,7 +6,7 @@ use GeneralPattern\Exceptions\InvalidFileException;
 
 /**
  * Class File
- * @package Corgi
+ * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
  * Corgi file handler class

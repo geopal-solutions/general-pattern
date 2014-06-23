@@ -6,7 +6,7 @@ use GeneralPattern\File;
 
 /**
  * Class GetCount
- * @package Corgi\Features
+ * @package GeneralPattern\Features
  * @author gabor.zelei@geopal-solutions.com
  *
  * Gets string occurrences matching the regex defined in

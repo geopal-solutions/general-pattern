@@ -6,7 +6,7 @@ use GeneralPattern\File;
 
 /**
  * Class FindDuplicates
- * @package Corgi\Features
+ * @package GeneralPattern\Features
  * @author gabor.zelei@geopal-solutions.com
  *
  * Looks for duplicate entries in the logs,

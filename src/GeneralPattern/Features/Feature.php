@@ -8,7 +8,7 @@ use GeneralPattern\Result;
 
 /**
  * Class Feature
- * @package Corgi\Features
+ * @package GeneralPattern\Features
  * @author gabor.zelei@geopal-solutions.com
  *
  * Base class for Features
@@ -26,6 +26,9 @@ abstract class Feature
     protected $result;
 
     /**
+     * Method to analyze a line in a log file based on
+     * metrics configuration
+     *
      * @param string $line
      * @param array $metric
      * @param File $file

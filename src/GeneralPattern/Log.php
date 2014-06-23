@@ -4,7 +4,7 @@ namespace GeneralPattern;
 
 /**
  * Class Log
- * @package Corgi
+ * @package GeneralPattern
  */
 class Log
 {
@@ -18,6 +18,8 @@ class Log
     const MSG_NO_VALID_FILES_FOUND = 'No valid input files have been found!';
     const MSG_NO_MATCHES_FOUND = 'Nothing was found in the logs that matches your search patterns. Exiting.';
     const MSG_WRITING_OUTPUT_TO_FILE = "Writing output file:\t%s";
+
+    const TIME_FORMAT = 'Y-m-d H:i:s e';
 
     /**
      * @var Log
@@ -58,6 +60,14 @@ class Log
         }
 
         return self::$instance;
+    }
+
+    /**
+     * Logs the current date and time
+     */
+    public function logTime()
+    {
+        $this->write(self::LEVEL_INFO, date(self::TIME_FORMAT));
     }
 
     /**

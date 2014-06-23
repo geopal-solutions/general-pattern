@@ -5,8 +5,8 @@ namespace GeneralPattern;
 use GeneralPattern\Exceptions\InvalidInputException;
 
 /**
- * Class Corgi
- * @package Corgi
+ * Class LogSniffer
+ * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
  * Corgi log analyzer main class
@@ -23,6 +23,10 @@ class LogSniffer
      */
     private $result;
 
+    /**
+     * @param Config $config
+     * @throws InvalidInputException
+     */
     public function __construct(Config $config)
     {
         $this->config = $config;
@@ -31,15 +35,13 @@ class LogSniffer
             throw new InvalidInputException();
         }
 
+        $this->setResourceLimits();
         Log::get()->setConfig($this->config);
-
-        ini_set('memory_limit', is_null($this->config->get('memory')) ? '1G' : $this->config->get('memory'));
-        set_time_limit(
-            is_null($this->config->get('max_execution_time')) ? 7200 : $this->config->get('mac_execution_time')
-        );
     }
 
     /**
+     * Creates a LogSniffer instance
+     *
      * @param Config $config
      * @return LogSniffer
      * @throws \Exception|Exceptions\InvalidInputException
@@ -54,27 +56,30 @@ class LogSniffer
     }
 
     /**
-     * Runs the analyzer on the target files
+     * Runs the analyzer on target files
      *
      * @return $this
      */
     public function run()
     {
-        Log::get()->write(Log::LEVEL_INFO, date('Y-m-d H:i:s e'));
+        Log::get()->logTime();
 
         $filePaths = $this->config->get('files');
 
         if (is_null($filePaths) || (is_array($filePaths) && (count($filePaths) < 1))) {
             Log::get()->write(LOG::LEVEL_ERROR, Log::MSG_NO_VALID_FILES_FOUND);
+        } else {
+            $analyzer = new Analyzer($this->config);
+            $analyzer->addFile($filePaths);
+            $this->result = $analyzer->run();
+
+            unset($analyzer);
+            gc_collect_cycles();
+
+            Log::get()->write(Log::LEVEL_INFO, Log::MSG_ALL_FILES_PROCESSED);
         }
 
-        $analyzer = new Analyzer($this->config);
-        $analyzer->addFile($filePaths);
-        $this->result = $analyzer->run();
-        unset($analyzer);
-
-        Log::get()->write(Log::LEVEL_INFO, Log::MSG_ALL_FILES_PROCESSED);
-        Log::get()->write(Log::LEVEL_INFO, date('Y-m-d H:i:s e'));
+        Log::get()->logTime();
         Log::get()->write(Log::LEVEL_INFO, sprintf(Log::MSG_MEMORY_CONSUMPTION, $this->getPeakMemory()));
 
         return $this;
@@ -183,5 +188,16 @@ class LogSniffer
         }
 
         return $result;
+    }
+
+    /**
+     * Sets limits for memory consumption and execution time
+     */
+    private function setResourceLimits()
+    {
+        ini_set('memory_limit', is_null($this->config->get('memory')) ? '1G' : $this->config->get('memory'));
+        set_time_limit(
+            is_null($this->config->get('max_execution_time')) ? 7200 : $this->config->get('mac_execution_time')
+        );
     }
 }

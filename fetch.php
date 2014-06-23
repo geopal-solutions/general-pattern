@@ -13,7 +13,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 use GeneralPattern\Config;
 use GeneralPattern\Exceptions\InvalidInputException;
 use GeneralPattern\LogSniffer;
-use GeneralPattern\Log;
 
 if (php_sapi_name() == 'cli') {
     $config = new Config(
@@ -25,7 +24,7 @@ if (php_sapi_name() == 'cli') {
     try {
         LogSniffer::create($config)->run()->getResult();
     } catch (InvalidInputException $e) {
-        die('Invalid configuration file.');
+        die('Invalid configuration.');
     }
 
 } else {

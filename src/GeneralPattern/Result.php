@@ -4,7 +4,7 @@ namespace GeneralPattern;
 
 /**
  * Class Result
- * @package Corgi
+ * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
  * Class to collect and format results
@@ -146,11 +146,11 @@ class Result
      */
     private function sortedResults()
     {
-        $sortedMetrics = array();
+        $sortedResults = array();
 
         foreach($this->metrics as $metricGroupName => $metricGroupValues) {
-            $sortedMetrics[$metricGroupName] = isset($sortedMetrics[$metricGroupName])
-                ? $sortedMetrics[$metricGroupName]
+            $sortedResults[$metricGroupName] = isset($sortedResults[$metricGroupName])
+                ? $sortedResults[$metricGroupName]
                 : array();
 
             foreach ($metricGroupValues as $metricName => $metricValues) {
@@ -172,12 +172,12 @@ class Result
 
                 }
 
-                $sortedMetrics[$metricGroupName][$metricName] = $metricValues;
+                $sortedResults[$metricGroupName][$metricName] = $metricValues;
             }
 
         }
 
-        return (count($sortedMetrics) > 1) ? $this->metrics : $sortedMetrics;
+        return (count($sortedResults) < 1) ? $this->metrics : $sortedResults;
     }
 
     /**

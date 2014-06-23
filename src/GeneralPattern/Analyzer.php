@@ -6,7 +6,7 @@ use GeneralPattern\Exceptions\InvalidFileException;
 
 /**
  * Class Analyzer
- * @package Corgi
+ * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
  * Runs analysis on files
@@ -90,7 +90,7 @@ class Analyzer
             }
 
         } elseif ($file instanceof File) {
-            $this->files[] =& $file;
+            $this->files[] = $file;
         } else {
             throw new InvalidFileException($file);
         }
