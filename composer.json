@@ -1,6 +1,6 @@
 {
-    "name": "geopal-solutions/corgi",
-    "description": "Corgi Log Analyzer",
+    "name": "geopal-solutions/general-pattern",
+    "description": "General Purpose Log Analyzer",
     "author": "gabor.zelei@geopal-solutions.com",
     "license": "MIT",
     "authors": [
