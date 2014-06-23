@@ -9,9 +9,9 @@ The idea behind this log sniffer was to build a general purpose, extensible log 
 
 #  Requirements and installation
 
-General Pattern requires PHP version `5.3` or greater. (PHP `5.4` is highly recommended.)
+General Pattern requires PHP version `5.3` or greater. (PHP `5.4` is highly recommended.) You will also need to have [composer](http://getcomposer.org) installed on your machine.
 
-To install, simply download the files or clone this repo.
+To install, simply download the files or clone this repo, then run `php composer.phar dump-autoload` to generate the class autoloader.
 
 # How to set up
 
