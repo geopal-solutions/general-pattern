@@ -67,7 +67,7 @@ class LogSniffer
         $filePaths = $this->config->get('files');
 
         if (is_null($filePaths) || (is_array($filePaths) && (count($filePaths) < 1))) {
-            Log::get()->write(LOG::LEVEL_ERROR, Log::MSG_NO_VALID_FILES_FOUND);
+            Log::get()->write(Log::LEVEL_ERROR, Log::MSG_NO_VALID_FILES_FOUND);
         } else {
             $analyzer = new Analyzer($this->config);
             $analyzer->addFile($filePaths);
