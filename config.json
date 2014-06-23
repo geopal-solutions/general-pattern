@@ -1,14 +1,12 @@
 {
     "file_extension": "log",
-    "files": [
-        "/Users/Gabor/Downloads/test"
-    ],
+    "files": [],
 
     "metrics": [{
         "type": "getCount",
         "name": "Users By Activity",
-        "regex": "\b\"username\":\"[a-zA-Z0-9_-]+\"\b",
-        "clean_up": ["username\":", "\""],
+        "regex": "",
+        "clean_up": [],
         "in_files": "*",
         "match_all": false,
         "sort": {
@@ -19,8 +17,8 @@
     }, {
         "type": "getCount",
         "name": "API Calls By Popularity",
-        "regex": "\b\"uri\":\"[a-zA-Z0-9\/_-]+\"\b",
-        "clean_up": ["uri\":\"/", "\""],
+        "regex": "",
+        "clean_up": [],
         "in_files": "*",
         "match_all": false,
         "sort": {
@@ -31,20 +29,13 @@
     }, {
         "type": "findDuplicates",
         "name": "Duplicate Lines",
-        "match": [
-            "\/{\"uri\":\"\\/api\\/jobs\\/changeall\",\/",
-            "\/{\"uri\":\"\\/api\\/jobworkflows\\/update\",\/",
-            "\/{\"uri\":\"\\/api\\/assets\\/replace\",\/",
-            "\/{\"uri\":\"\\/api\\/tracks\\/new\",\/"
-        ],
-        "ignore": [
-            "\/^\\[([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])\\] API.INFO: API\/",
-            "\/\"time\":[0-9]+,\/"
-        ],
+        "match": [],
+        "ignore": [],
         "in_files": "*"
     }],
 
     "logging": true,
+    "log_append": true,
     "log_file": "./logsniffer.log",
     "max_execution_time": 7200,
     "memory": "2G",

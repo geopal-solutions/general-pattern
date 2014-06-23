@@ -79,6 +79,11 @@ class Log
         $logFilePath = $this->config->get('log_file');
 
         if (File::isWritable($logFilePath)) {
+
+            if (!$this->config->get('log_append')) {
+                @unlink($logFilePath);
+            }
+
             $this->logFile = $logFilePath;
         }
     }
