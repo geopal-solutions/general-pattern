@@ -9,7 +9,7 @@ use GeneralPattern\Exceptions\InvalidInputException;
  * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
- * Corgi log analyzer main class
+ * Log analyzer main class
  */
 class LogSniffer
 {
