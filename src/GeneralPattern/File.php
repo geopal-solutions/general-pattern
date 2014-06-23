@@ -9,7 +9,7 @@ use GeneralPattern\Exceptions\InvalidFileException;
  * @package GeneralPattern
  * @author gabor.zelei@geopal-solutions.com
  *
- * Corgi file handler class
+ * File handler class
  */
 class File
 {
